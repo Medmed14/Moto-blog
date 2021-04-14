@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BikeRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=BikeRepository::class)
  */
@@ -21,9 +21,18 @@ class Bike
      * @ORM\Column(type="string", length=100)
      */
     private $marque;
+    
+    // on REDIGE LA CONTRAINTE 
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\Length(
+     *  min = 2,
+     *  max = 12,
+     *  minMessage = "le modèle doit comporter au moins {{ limit }} charactères ",
+     *  maxMessage = "le modèle doit comporter au plus {{ limit }} charactères ",
+     * )
      */
     private $modele;
 

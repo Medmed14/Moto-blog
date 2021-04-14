@@ -6,6 +6,7 @@
 
 {% block body %}
     <h1>Liste des motos</h1>
+    <div class="text-end"><a href="{{ path('app_add')}}" class="btn btn-warning"><i class="fas fa-plus"></i></a></div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -13,6 +14,7 @@
                 <th>Marque</th>
                 <th>Modele</th>
                 <th>Prix</th>
+                <th>Pays</th>
                 <th>Description</th>
                 <th colspan="2">Actions</th>
             </tr>
@@ -24,9 +26,10 @@
                 <td>{{ moto.marque }}</td>
                 <td>{{ moto.modele }}</td>
                 <td>{{ moto.prix }} €</td>
+                <td>{{ moto.pays }}</td>
                 <td>{{ moto.description }}</td>
-                <td><a href="{{path('app_edit', {id:moto.id}) }}">Edit</a></td>
-                <td><a href="{{path('app_delete', {id:moto.id}) }}">Suppr</a></td>
+                <td><a href="{{path('app_edit', {id:moto.id}) }}"><i class="text-success fas fa-edit"></i></a></td>
+                <td><a href="{{path('app_delete', {id:moto.id}) }}"><i class="text-danger fas fa-trash"></i></a></td>
             </tr>
             {% endfor %}
         </tbody>
