@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste
+{% endblock %}
+
+{% block body %}
+    <h1>Liste des motos</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marque</th>
+                <th>Modele</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for moto in tabMotos %}
+            <tr>
+                <td>{{ moto.id }}</td>
+                <td>{{ moto.marque }}</td>
+                <td>{{ moto.modele }}</td>
+                <td>{{ moto.prix }} €</td>
+                <td>{{ moto.description }}</td>
+                <td><a href="{{path('app_edit', {id:moto.id}) }}">Edit</a></td>
+                <td><a href="{{path('app_delete', {id:moto.id}) }}">Suppr</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
